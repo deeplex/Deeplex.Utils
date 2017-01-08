@@ -10,7 +10,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License. 
+// limitations under the License.
 
 using System.Security.Cryptography;
 
@@ -23,8 +23,7 @@ namespace NotEnoughTime.Utils.Random
 
         public static uint NextUInt()
         {
-            var raw = new byte[4];
-            NextBytes(raw);
+            var raw = NextBytes(4);
             return raw[0]
                    | ((uint) raw[1] << 8)
                    | ((uint) raw[2] << 16)
@@ -33,8 +32,7 @@ namespace NotEnoughTime.Utils.Random
 
         public static ulong NextULong()
         {
-            var raw = new byte[8];
-            NextBytes(raw);
+            var raw = NextBytes(8);
             return raw[0]
                    | ((ulong) raw[1] << 8)
                    | ((ulong) raw[2] << 16)
@@ -47,5 +45,12 @@ namespace NotEnoughTime.Utils.Random
 
         public static void NextBytes(byte[] data)
             => Generator.GetBytes(data);
+
+        public static byte[] NextBytes(int numBytes)
+        {
+            var dest = new byte[numBytes];
+            NextBytes(dest);
+            return dest;
+        }
     }
 }
