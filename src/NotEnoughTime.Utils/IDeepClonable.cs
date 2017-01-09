@@ -14,17 +14,10 @@
 
 using System;
 
-namespace NotEnoughTime.Utils.Random
+namespace NotEnoughTime.Utils
 {
-    public class PrngFactory
+    public interface IDeepClonable<out T>
     {
-        public XoroShiro128Plus CreateXoroShiro128Plus()
-            => new XoroShiro128Plus();
-
-        public XoroShiro128Plus CreateXoroShiro128Plus(ulong seed)
-            => XoroShiro128Plus.Create(seed);
-
-        public XoroShiro128Plus CreateXoroShiro128Plus(ulong s1, ulong s2)
-            => XoroShiro128Plus.Create(s1, s2);
+        T Clone();
     }
 }

@@ -14,17 +14,21 @@
 
 using System;
 
-namespace NotEnoughTime.Utils.Random
+namespace NotEnoughTime.Utils.ObjectModel
 {
-    public class PrngFactory
+    public class ObservableProperty<T> : BindableBase
     {
-        public XoroShiro128Plus CreateXoroShiro128Plus()
-            => new XoroShiro128Plus();
+        private T mValue;
 
-        public XoroShiro128Plus CreateXoroShiro128Plus(ulong seed)
-            => XoroShiro128Plus.Create(seed);
+        public ObservableProperty(T initial = default(T))
+        {
+            mValue = initial;
+        }
 
-        public XoroShiro128Plus CreateXoroShiro128Plus(ulong s1, ulong s2)
-            => XoroShiro128Plus.Create(s1, s2);
+        public T Value
+        {
+            get { return mValue; }
+            set { SetProperty(ref mValue, value); }
+        }
     }
 }
