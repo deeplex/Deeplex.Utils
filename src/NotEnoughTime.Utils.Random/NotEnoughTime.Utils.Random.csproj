@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <AssemblyTitle>NotEnoughTime PRNG Utils</AssemblyTitle>
+    <Description>Contains XoroShiro128+ and SplitMix64 PRNGs and some common random number distributions.</Description>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <Authors>Henrik Steffen Gaßmann</Authors>
+    <Copyright>Apache 2.0 License; Copyright 2016 Henrik Steffen Gaßmann</Copyright>
+    <PackageProjectUrl>https://github.com/not-enough-time/NotEnoughTime.Utils</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <TargetFramework>netstandard1.3</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**\*.cs" />
+    <EmbeddedResource Include="**\*.resx" />
+    <EmbeddedResource Include="compiler\resources\**\*" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.0" />
+    <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
+  </ItemGroup>
+</Project>
