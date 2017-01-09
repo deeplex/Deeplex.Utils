@@ -10,8 +10,9 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.    
+// limitations under the License.
 
+using System;
 using System.Runtime.CompilerServices;
 
 namespace NotEnoughTime.Utils.Random
@@ -43,8 +44,8 @@ namespace NotEnoughTime.Utils.Random
         public override ulong Next64Bits()
         {
             var z = mS += 0x9E3779B97F4A7C15;
-            z = (z ^ (z >> 30))*0xBF58476D1CE4E5B9;
-            z = (z ^ (z >> 27))*0x94D049BB133111EB;
+            z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9;
+            z = (z ^ (z >> 27)) * 0x94D049BB133111EB;
             return z ^ (z >> 31);
         }
     }

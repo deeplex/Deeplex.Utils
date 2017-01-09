@@ -33,11 +33,12 @@ namespace NotEnoughTime.Utils.ObjectModel
 
         public bool CanExecute(object parameter)
             => (parameter is T
-            || (!typeof(T).GetTypeInfo().IsValueType && parameter == null)) // if T isn't a value type, parameter may also equal null
-            && (mCanExecute == null || mCanExecute((T)parameter));
+                || (!typeof(T).GetTypeInfo()
+                        .IsValueType && parameter == null)) // if T isn't a value type, parameter may also equal null
+               && (mCanExecute == null || mCanExecute((T) parameter));
 
         public void Execute(object parameter)
-            => mExecute?.Invoke((T)parameter);
+            => mExecute?.Invoke((T) parameter);
 
         public void RaiseCanExecuteChanged(EventArgs args)
             => CanExecuteChanged?.Invoke(this, args);

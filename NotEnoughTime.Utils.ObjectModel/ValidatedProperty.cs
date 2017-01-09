@@ -20,8 +20,8 @@ using System.Reflection;
 namespace NotEnoughTime.Utils.ObjectModel
 {
     public interface IValidatedProperty
-        : INotifyPropertyChanged
-        , INotifyDataErrorInfo
+        : INotifyPropertyChanged,
+            INotifyDataErrorInfo
     {
         bool IsValid { get; }
 
@@ -36,12 +36,13 @@ namespace NotEnoughTime.Utils.ObjectModel
     }
 
     public sealed class ValidatedProperty<T> : ValidateableBase
-        , IValidatedProperty
+        ,
+        IValidatedProperty
     {
         private readonly Func<T, T> Clone;
+        private bool mIsEnabled;
         private T mOriginal;
         private T mValue;
-        private bool mIsEnabled;
         private bool mValueHasBeenSet;
 
         public ValidatedProperty(Func<T, T> clone = null)
@@ -54,11 +55,11 @@ namespace NotEnoughTime.Utils.ObjectModel
             }
             else if (typeof(IDeepClonable<T>).IsAssignableFrom(typeof(T)))
             {
-                Clone = (obj) => ((IDeepClonable<T>)obj).Clone();
+                Clone = obj => ((IDeepClonable<T>) obj).Clone();
             }
             else
             {
-                Clone = (obj) => obj;
+                Clone = obj => obj;
             }
         }
 
@@ -107,15 +108,6 @@ namespace NotEnoughTime.Utils.ObjectModel
         public void Revert()
             => Value = Original;
 
-        public void ApplyChange()
-            => Original = Value;
-
-
-        public override string ToString()
-        {
-            return Value?.ToString() ?? String.Empty;
-        }
-
         public void AddError(string error)
             => AddError("Value", error);
 
@@ -127,5 +119,12 @@ namespace NotEnoughTime.Utils.ObjectModel
 
         public void GetErrors()
             => GetErrors("Value");
+
+        public void ApplyChange()
+            => Original = Value;
+
+
+        public override string ToString()
+            => Value?.ToString() ?? string.Empty;
     }
 }

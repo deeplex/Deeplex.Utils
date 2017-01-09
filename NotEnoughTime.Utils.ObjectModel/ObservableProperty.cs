@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
+
 namespace NotEnoughTime.Utils.ObjectModel
 {
     public class ObservableProperty<T> : BindableBase

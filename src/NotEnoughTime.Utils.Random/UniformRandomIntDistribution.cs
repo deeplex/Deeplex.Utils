@@ -27,8 +27,10 @@ namespace NotEnoughTime.Utils.Random
             set
             {
                 if (value > mUpperBound)
+                {
                     throw new ArgumentOutOfRangeException(nameof(value),
                         $"Tried to set the LowerBoundary to a value higher than the UpperBound ({value} > {mUpperBound})");
+                }
                 mLowerBound = value;
             }
         }
@@ -39,8 +41,10 @@ namespace NotEnoughTime.Utils.Random
             set
             {
                 if (value < mLowerBound)
+                {
                     throw new ArgumentOutOfRangeException(nameof(value),
                         $"Tried to set the LowerBoundary to a value higher than the UpperBound ({value} > {mLowerBound})");
+                }
                 mUpperBound = value;
             }
         }
@@ -61,21 +65,28 @@ namespace NotEnoughTime.Utils.Random
         private static uint Adjust(IUniformRandomBitGenerator generator, uint upperBoundary)
         {
             if (generator == null)
+            {
                 throw new ArgumentNullException(nameof(generator));
+            }
             if (upperBoundary == 0)
+            {
                 return 0;
+            }
             if (upperBoundary == uint.MaxValue)
+            {
                 return generator.Next32Bits();
+            }
 
             ++upperBoundary;
-            var numBuckets = ulong.MaxValue/upperBoundary;
-            var limit = numBuckets*upperBoundary;
+            var numBuckets = ulong.MaxValue / upperBoundary;
+            var limit = numBuckets * upperBoundary;
             ulong sample;
             do
             {
                 sample = generator.Next64Bits();
-            } while (sample >= limit);
-            return (uint) (sample/numBuckets);
+            }
+            while (sample >= limit);
+            return (uint) (sample / numBuckets);
         }
     }
 }

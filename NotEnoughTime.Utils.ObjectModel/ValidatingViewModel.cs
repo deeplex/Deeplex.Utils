@@ -33,17 +33,12 @@ namespace NotEnoughTime.Utils.ObjectModel
         void Revert();
     }
 
-    public abstract class ValidatingViewModel<T> : ValidateableBase
-        , IValidatingViewModel
+    public abstract class ValidatingViewModel<T> : ValidateableBase,
+        IValidatingViewModel
         where T : IValidatingViewModel
     {
         private bool mIsDirty;
         private bool mIsValid = true;
-
-        private IReadOnlyList<PropertyInfo> Properties { get; }
-        protected IEnumerable<IValidatedProperty> ValidatedProperties
-            => Properties.Select(x => x.GetValue(this) as IValidatedProperty)
-                .Where(x => x != null);
 
         protected ValidatingViewModel()
         {
@@ -66,6 +61,12 @@ namespace NotEnoughTime.Utils.ObjectModel
                 };
             }
         }
+
+        private IReadOnlyList<PropertyInfo> Properties { get; }
+
+        protected IEnumerable<IValidatedProperty> ValidatedProperties
+            => Properties.Select(x => x.GetValue(this) as IValidatedProperty)
+                .Where(x => x != null);
 
         public bool IsValid
         {

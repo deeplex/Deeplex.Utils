@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -22,7 +23,8 @@ namespace NotEnoughTime.Utils.ObjectModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void SetProperty<T>(ref T storage, T value,
+        protected virtual void SetProperty<T>(ref T storage,
+            T value,
             [CallerMemberName] string propertyName = "")
         {
             if (!Equals(storage, value))

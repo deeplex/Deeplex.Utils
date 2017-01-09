@@ -20,8 +20,8 @@ using System.Linq;
 
 namespace NotEnoughTime.Utils.ObjectModel
 {
-    public abstract class ValidateableBase : BindableBase
-        , INotifyDataErrorInfo
+    public abstract class ValidateableBase : BindableBase,
+        INotifyDataErrorInfo
     {
         protected Dictionary<string, IList<string>> mValidationErrors
             = new Dictionary<string, IList<string>>();
@@ -29,6 +29,19 @@ namespace NotEnoughTime.Utils.ObjectModel
         public bool HasErrors => mValidationErrors.Count > 0;
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            if (!string.IsNullOrEmpty(propertyName))
+            {
+                mValidationErrors.TryGetValue(propertyName, out var errors);
+                return (errors?.Any() ?? false) ? errors : null;
+            }
+            else
+            {
+                return mValidationErrors.SelectMany(x => x.Value);
+            }
+        }
 
         protected void RaiseErrorsChanged(DataErrorsChangedEventArgs args)
         {
@@ -40,7 +53,10 @@ namespace NotEnoughTime.Utils.ObjectModel
         {
             if (!mValidationErrors.TryGetValue(propertyName, out var errorList))
             {
-                mValidationErrors.Add(propertyName, new List<string> { error });
+                mValidationErrors.Add(propertyName, new List<string>
+                {
+                    error
+                });
             }
             else
             {
@@ -80,19 +96,6 @@ namespace NotEnoughTime.Utils.ObjectModel
                 }
             }
             RaiseErrorsChanged(new DataErrorsChangedEventArgs(propertyName));
-        }
-
-        public IEnumerable GetErrors(string propertyName)
-        {
-            if (!string.IsNullOrEmpty(propertyName))
-            {
-                mValidationErrors.TryGetValue(propertyName, out var errors);
-                return (errors?.Any() ?? false) ? errors : null;
-            }
-            else
-            {
-                return mValidationErrors.SelectMany(x => x.Value);
-            }
         }
     }
 }

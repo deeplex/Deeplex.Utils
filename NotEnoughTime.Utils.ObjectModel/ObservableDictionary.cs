@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -21,16 +22,13 @@ using System.Diagnostics.CodeAnalysis;
 namespace NotEnoughTime.Utils.ObjectModel
 {
     public class ObservableDictionary<TKey, TValue>
-        : IDictionary<TKey, TValue>
-        , IReadOnlyDictionary<TKey, TValue>
-        , INotifyCollectionChanged
-        , INotifyPropertyChanged
+        : IDictionary<TKey, TValue>,
+            IReadOnlyDictionary<TKey, TValue>,
+            INotifyCollectionChanged,
+            INotifyPropertyChanged
     {
         private readonly Dictionary<TKey, TValue> mImpl
             = new Dictionary<TKey, TValue>();
-
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public TValue this[TKey key]
         {
@@ -58,17 +56,11 @@ namespace NotEnoughTime.Utils.ObjectModel
 
         public int Count => mImpl.Count;
 
-        bool ICollection<KeyValuePair<TKey, TValue>>.IsReadOnly => ((IDictionary<TKey, TValue>)mImpl).IsReadOnly;
+        bool ICollection<KeyValuePair<TKey, TValue>>.IsReadOnly => ((IDictionary<TKey, TValue>) mImpl).IsReadOnly;
 
         public ICollection<TKey> Keys => mImpl.Keys;
 
         public ICollection<TValue> Values => mImpl.Values;
-
-        IEnumerable<TKey> IReadOnlyDictionary<TKey, TValue>.Keys
-            => ((IReadOnlyDictionary<TKey, TValue>)mImpl).Keys;
-
-        IEnumerable<TValue> IReadOnlyDictionary<TKey, TValue>.Values
-            => ((IReadOnlyDictionary<TKey, TValue>)mImpl).Values;
 
         void ICollection<KeyValuePair<TKey, TValue>>.Add(KeyValuePair<TKey, TValue> item)
         {
@@ -93,7 +85,7 @@ namespace NotEnoughTime.Utils.ObjectModel
         [SuppressMessage("Microsoft.Design", "CA1033",
             Justification = "ContainsKey should be used instead of this.")]
         bool ICollection<KeyValuePair<TKey, TValue>>.Contains(KeyValuePair<TKey, TValue> item)
-            => ((ICollection<KeyValuePair<TKey, TValue>>)mImpl).Contains(item);
+            => ((ICollection<KeyValuePair<TKey, TValue>>) mImpl).Contains(item);
 
         public bool ContainsKey(TKey key)
             => mImpl.ContainsKey(key);
@@ -101,7 +93,7 @@ namespace NotEnoughTime.Utils.ObjectModel
         [SuppressMessage("Microsoft.Design", "CA1033",
             Justification = "This method isn't implemented by the standard dictionary.")]
         void ICollection<KeyValuePair<TKey, TValue>>.CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
-            => ((ICollection<KeyValuePair<TKey, TValue>>)mImpl).CopyTo(array, arrayIndex);
+            => ((ICollection<KeyValuePair<TKey, TValue>>) mImpl).CopyTo(array, arrayIndex);
 
         public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
             => mImpl.GetEnumerator();
@@ -126,7 +118,16 @@ namespace NotEnoughTime.Utils.ObjectModel
             => mImpl.TryGetValue(key, out value);
 
         IEnumerator IEnumerable.GetEnumerator()
-            => ((IEnumerable)mImpl).GetEnumerator();
+            => ((IEnumerable) mImpl).GetEnumerator();
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        IEnumerable<TKey> IReadOnlyDictionary<TKey, TValue>.Keys
+            => ((IReadOnlyDictionary<TKey, TValue>) mImpl).Keys;
+
+        IEnumerable<TValue> IReadOnlyDictionary<TKey, TValue>.Values
+            => ((IReadOnlyDictionary<TKey, TValue>) mImpl).Values;
 
         private void RaiseCollectionChanged(NotifyCollectionChangedEventArgs args)
         {
