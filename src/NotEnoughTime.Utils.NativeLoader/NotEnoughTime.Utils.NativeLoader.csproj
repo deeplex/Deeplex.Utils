@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyTitle>NotEnoughTime .NET Native Library Loader Utilities</AssemblyTitle>
+    <Description>Abstracts platform and interop APIs for dynamically loading and using native binaries from .net core and .net framework.</Description>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <Authors>Henrik Steffen Gaßmann</Authors>
+    <Copyright>Boost Software License, Version 1.0; Copyright © 2017 Henrik Steffen Gaßmann</Copyright>
+    <PackageProjectUrl>https://github.com/not-enough-time/NotEnoughTime.Utils</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.boost.org/LICENSE_1_0.txt</PackageLicenseUrl>
+    <TargetFrameworks>netstandard1.3;net46</TargetFrameworks>
+    <RepositoryUrl>https://github.com/not-enough-time/NotEnoughTime.Utils.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
+    <DefineConstant>NET46</DefineConstant>
+  </PropertyGroup>
+</Project>
