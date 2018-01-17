@@ -14,22 +14,25 @@
 
 using System;
 
-namespace NotEnoughTime.Utils.Random
+namespace Deeplex.Utils.Random
 {
-    public interface IRandomNumberDistribution
+    public class UniformRandomDoubleDistribution :
+        IRandomDoubleDistribution
     {
-        IUniformRandomBitGenerator Generator { get; set; }
-    }
+        private const ulong mMask = 0x3FFul << 52;
 
-    public interface IRandomIntDistribution : IRandomNumberDistribution
-    {
-        int NextInt();
-        int NextInt(IUniformRandomBitGenerator generator);
-    }
+        public IUniformRandomBitGenerator Generator { get; set; }
 
-    public interface IRandomDoubleDistribution : IRandomNumberDistribution
-    {
-        double NextDouble();
-        double NextDouble(IUniformRandomBitGenerator generator);
+        public double NextDouble()
+            => Next(Generator);
+
+        public double NextDouble(IUniformRandomBitGenerator generator)
+            => Next(generator);
+
+        public static double Next(IUniformRandomBitGenerator generator)
+        {
+            var entropy = mMask | (generator.Next64Bits() >> 12);
+            return BitConverter.Int64BitsToDouble((long) entropy) - 1.0;
+        }
     }
 }

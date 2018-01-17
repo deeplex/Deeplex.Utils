@@ -14,10 +14,17 @@
 
 using System;
 
-namespace NotEnoughTime.Utils
+namespace Deeplex.Utils.Random
 {
-    public interface IDeepClonable<out T>
+    public class PrngFactory
     {
-        T Clone();
+        public XoroShiro128Plus CreateXoroShiro128Plus()
+            => new XoroShiro128Plus();
+
+        public XoroShiro128Plus CreateXoroShiro128Plus(ulong seed)
+            => XoroShiro128Plus.Create(seed);
+
+        public XoroShiro128Plus CreateXoroShiro128Plus(ulong s1, ulong s2)
+            => XoroShiro128Plus.Create(s1, s2);
     }
 }

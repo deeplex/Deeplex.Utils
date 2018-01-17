@@ -19,7 +19,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace NotEnoughTime.Utils.ObjectModel
+namespace Deeplex.Utils.ObjectModel
 {
     public interface IValidatingViewModel : INotifyDataErrorInfo
     {

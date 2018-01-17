@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace NotEnoughTime.Utils.NativeLoader
+namespace Deeplex.Utils.NativeLoader
 {
     public class NativeLibrary : SafeHandle
     {

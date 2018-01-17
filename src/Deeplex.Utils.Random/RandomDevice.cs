@@ -15,7 +15,7 @@
 using System;
 using System.Security.Cryptography;
 
-namespace NotEnoughTime.Utils.Random
+namespace Deeplex.Utils.Random
 {
     public static class RandomDevice
     {

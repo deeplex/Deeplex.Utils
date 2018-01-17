@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace NotEnoughTime.Utils.ObjectModel
+namespace Deeplex.Utils.ObjectModel
 {
     public abstract class ValidateableBase : BindableBase,
         INotifyDataErrorInfo

@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace NotEnoughTime.Utils.ObjectModel
+namespace Deeplex.Utils.ObjectModel
 {
     public interface IValidatedProperty
         : INotifyPropertyChanged,

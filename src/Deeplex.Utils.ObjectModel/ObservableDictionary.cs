@@ -19,7 +19,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
-namespace NotEnoughTime.Utils.ObjectModel
+namespace Deeplex.Utils.ObjectModel
 {
     public class ObservableDictionary<TKey, TValue>
         : IDictionary<TKey, TValue>,

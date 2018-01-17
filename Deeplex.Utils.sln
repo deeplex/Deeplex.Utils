@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotEnoughTime.Utils.Random", "src\NotEnoughTime.Utils.Random\NotEnoughTime.Utils.Random.csproj", "{4D5F6F33-4E58-41E6-9135-238D95DBA9D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Deeplex.Utils.Random", "src\Deeplex.Utils.Random\Deeplex.Utils.Random.csproj", "{4D5F6F33-4E58-41E6-9135-238D95DBA9D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotEnoughTime.Utils.ObjectModel", "src\NotEnoughTime.Utils.ObjectModel\NotEnoughTime.Utils.ObjectModel.csproj", "{67E7BB31-50B5-4473-B04A-8E040DE7C516}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deeplex.Utils.ObjectModel", "src\Deeplex.Utils.ObjectModel\Deeplex.Utils.ObjectModel.csproj", "{67E7BB31-50B5-4473-B04A-8E040DE7C516}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotEnoughTime.Utils", "src\NotEnoughTime.Utils\NotEnoughTime.Utils.csproj", "{E65852B6-9942-40D1-8CE0-A9987B12C442}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deeplex.Utils", "src\Deeplex.Utils\Deeplex.Utils.csproj", "{E65852B6-9942-40D1-8CE0-A9987B12C442}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C44CD182-19D3-47DF-8128-B7B2180AB45C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotEnoughTime.Utils.NativeLoader", "src\NotEnoughTime.Utils.NativeLoader\NotEnoughTime.Utils.NativeLoader.csproj", "{7F3BBCF0-CBBD-443C-AA37-0DB90A4D699B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Deeplex.Utils.NativeLoader", "src\Deeplex.Utils.NativeLoader\Deeplex.Utils.NativeLoader.csproj", "{7F3BBCF0-CBBD-443C-AA37-0DB90A4D699B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

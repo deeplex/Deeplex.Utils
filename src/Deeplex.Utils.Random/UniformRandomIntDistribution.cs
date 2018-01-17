@@ -14,7 +14,7 @@
 
 using System;
 
-namespace NotEnoughTime.Utils.Random
+namespace Deeplex.Utils.Random
 {
     public class UniformRandomIntDistribution : IRandomIntDistribution
     {

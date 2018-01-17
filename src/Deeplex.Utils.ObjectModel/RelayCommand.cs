@@ -16,7 +16,7 @@ using System;
 using System.Reflection;
 using System.Windows.Input;
 
-namespace NotEnoughTime.Utils.ObjectModel
+namespace Deeplex.Utils.ObjectModel
 {
     public class RelayCommand<T> : ICommand
     {

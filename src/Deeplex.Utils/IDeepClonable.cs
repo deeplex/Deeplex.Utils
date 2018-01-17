@@ -1,4 +1,4 @@
-﻿// Copyright © 2016 Henrik Steffen Gaßmann
+// Copyright © 2016 Henrik Steffen Gaßmann
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,21 +14,10 @@
 
 using System;
 
-namespace NotEnoughTime.Utils.ObjectModel
+namespace Deeplex.Utils
 {
-    public class ObservableProperty<T> : BindableBase
+    public interface IDeepClonable<out T>
     {
-        private T mValue;
-
-        public ObservableProperty(T initial = default(T))
-        {
-            mValue = initial;
-        }
-
-        public T Value
-        {
-            get { return mValue; }
-            set { SetProperty(ref mValue, value); }
-        }
+        T Clone();
     }
 }

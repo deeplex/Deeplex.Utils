@@ -15,7 +15,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace NotEnoughTime.Utils.Random
+namespace Deeplex.Utils.Random
 {
     // Ported from http://xoroshiro.di.unimi.it/xoroshiro128plus.c
     public sealed class XoroShiro128Plus : Random64BitGenerator

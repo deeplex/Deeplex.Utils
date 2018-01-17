@@ -7,9 +7,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using static NotEnoughTime.Utils.NativeLoader.PlatformApi;
+using static Deeplex.Utils.NativeLoader.PlatformApi;
 
-namespace NotEnoughTime.Utils.NativeLoader
+namespace Deeplex.Utils.NativeLoader
 {
     public static class LoaderApi
     {
